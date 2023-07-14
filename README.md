@@ -1,7 +1,7 @@
 # ROS_service_addtwoints
 
 ## To run:
-in one terminal:
+in one terminal (service is my package's name, type whatever your package's name is):
 ```
 rosrun service server.py
 ```
