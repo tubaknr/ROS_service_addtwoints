@@ -2,16 +2,23 @@
 
 import rospy 
 from service.srv import addTwoInts, addTwoIntsResponse
+#from std_srvs import SetBool 
 
 def handle_add_two_ints(req):
-    result = req.a + req.b 
+    """
+    Service handler.
+    Calculates the sum of 2 inputs. 
+    If the result has 1 digit, print the result and return True.
+    If the result has 2 digits, print the result and return False. 
+    """
+    result = req.a + req.b
+    success = False 
     print(f"Sum of {req.a} and {req.b} is: {(result)}")
 
+    #if the result has 2 digits, print the result and return False.
     if (result) <= 9:
-        return addTwoIntsResponse(result)
-    else:
-        return False
-    
+        success = True 
+    return addTwoIntsResponse(result, success)
 
 def add_two_ints_server():
     rospy.init_node("add_two_ints_server")
